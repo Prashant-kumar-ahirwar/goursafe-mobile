@@ -6,6 +6,7 @@ import android.net.Uri;
 import android.os.Bundle;
 import android.os.SystemClock;
 import android.view.View;
+import android.webkit.CookieManager;
 import android.webkit.WebView;
 import android.widget.Toast;
 
@@ -30,6 +31,11 @@ public class MainActivity extends BridgeActivity {
         WebView webView = getBridge().getWebView();
         webView.setOverScrollMode(View.OVER_SCROLL_NEVER);
 
+        // Keep the sign-in cookie: accept cookies and write them to storage now,
+        // so the student is still signed in after the app is closed.
+        CookieManager.getInstance().setAcceptCookie(true);
+        CookieManager.getInstance().setAcceptThirdPartyCookies(webView, true);
+
         // Back button:
         //   1 press, on any other page -> go to the Home screen
         //   1 press, already on Home   -> "Press back again to exit"
@@ -40,6 +46,19 @@ public class MainActivity extends BridgeActivity {
                 onGourSafeBack();
             }
         });
+    }
+
+    @Override
+    public void onPause() {
+        // Write cookies (the sign-in) to disk whenever the app leaves the screen
+        CookieManager.getInstance().flush();
+        super.onPause();
+    }
+
+    @Override
+    public void onStop() {
+        CookieManager.getInstance().flush();
+        super.onStop();
     }
 
     private void onGourSafeBack() {
