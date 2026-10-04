@@ -1,0 +1,16 @@
+{
+  "name": "goursafe-mobile",
+  "version": "1.0.0",
+  "private": true,
+  "description": "GourSafe Android app (Capacitor wrapper around the Flask web app)",
+  "scripts": {
+    "sync": "npx cap sync android",
+    "open": "npx cap open android"
+  },
+  "dependencies": {
+    "@capacitor-community/background-geolocation": "^1.2.26",
+    "@capacitor/android": "^8.5.2",
+    "@capacitor/cli": "^8.5.2",
+    "@capacitor/core": "^8.5.2"
+  }
+}
