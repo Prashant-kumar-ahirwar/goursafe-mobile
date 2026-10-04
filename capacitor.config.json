@@ -3,7 +3,7 @@
   "appName": "GourSafe",
   "webDir": "www",
   "server": {
-    "url": "https://YOUR-APP.vercel.app",
+    "url": "https://gour-safe.vercel.app/",
     "cleartext": false,
     "errorPath": "offline.html"
   },
