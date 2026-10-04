@@ -1,0 +1,18 @@
+{
+	"appId": "in.ac.dhsgu.goursafe",
+	"appName": "GourSafe",
+	"webDir": "www",
+	"server": {
+		"url": "https://YOUR-APP.vercel.app",
+		"cleartext": false,
+		"errorPath": "offline.html"
+	},
+	"android": {
+		"useLegacyBridge": true
+	},
+	"plugins": {
+		"CapacitorHttp": {
+			"enabled": true
+		}
+	}
+}
